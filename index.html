@@ -259,6 +259,86 @@
   .time-col { color: var(--muted); white-space: nowrap; }
   .venue-col { color: #555; font-size: 0.7rem; }
 
+  /* ===== Prediction Tab ===== */
+  .predict-stats-bar {
+    background: rgba(240,192,64,0.06); border: 1px solid rgba(240,192,64,0.15);
+    border-radius: 10px; padding: 10px 16px; margin-bottom: 12px;
+    font-size: 0.82rem; text-align: center;
+  }
+  .predict-stats-bar strong { color: var(--gold); }
+  .predict-subtabs {
+    display: flex; justify-content: center; gap: 8px; margin-bottom: 12px;
+  }
+  .predict-subtab {
+    background: transparent; border: 1px solid var(--border); color: var(--muted);
+    padding: 6px 16px; border-radius: 20px; cursor: pointer; font-size: 0.8rem;
+    font-weight: 600; transition: all 0.2s;
+  }
+  .predict-subtab:hover { border-color: var(--gold); color: var(--text); }
+  .predict-subtab.active { background: var(--gold); color: #000; border-color: var(--gold); }
+
+  .pred-section-title {
+    color: var(--gold); font-size: 0.82rem; font-weight: 700;
+    padding: 8px 0 4px; border-bottom: 1px solid var(--border);
+    margin: 14px 0 8px;
+  }
+  .pred-round-group {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 10px; overflow: hidden; margin-bottom: 10px;
+  }
+  .pred-round-header {
+    background: var(--accent); padding: 8px 14px; font-weight: 700; font-size: 0.85rem;
+  }
+  .pred-match-row {
+    display: flex; align-items: center; padding: 5px 12px;
+    border-bottom: 1px solid var(--border); font-size: 0.78rem; gap: 8px;
+  }
+  .pred-match-row:last-child { border-bottom: none; }
+  .pred-match-row .pred-num { color: #555; font-size: 0.65rem; min-width: 20px; }
+  .pred-match-row .pred-teams { flex: 1; min-width: 0; }
+  .pred-match-row .pred-score {
+    background: var(--accent); padding: 2px 8px; border-radius: 4px;
+    font-weight: 700; color: var(--gold); min-width: 38px; text-align: center;
+    cursor: pointer; font-size: 0.78rem; flex-shrink: 0;
+  }
+  .pred-match-row .pred-score.pending { color: var(--muted); font-weight: 400; }
+  .pred-match-row .pred-score:hover { background: #2a4a3a; }
+  .pred-match-row .pred-time {
+    font-size: 0.7rem; color: var(--gold); font-weight: 600;
+    min-width: 52px; text-align: right; flex-shrink: 0;
+  }
+  .pred-match-row .pred-venue {
+    font-size: 0.6rem; color: #3a3a3a; max-width: 100px;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex-shrink: 0;
+  }
+
+  /* Comparison table */
+  .compare-group-title {
+    color: var(--gold); font-size: 0.82rem; font-weight: 700;
+    padding: 10px 0 4px; border-bottom: 1px solid var(--border);
+    margin: 14px 0 6px;
+  }
+  .compare-table {
+    width: 100%; border-collapse: collapse; font-size: 0.76rem;
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 8px; overflow: hidden;
+  }
+  .compare-table th {
+    background: var(--accent); padding: 7px 10px; text-align: left;
+    font-weight: 700; font-size: 0.72rem;
+  }
+  .compare-table td {
+    padding: 5px 10px; border-bottom: 1px solid var(--border);
+  }
+  .compare-table tr:hover td { background: rgba(240,192,64,0.04); }
+  .cmp-exact { color: #4ade80; font-weight: 700; }
+  .cmp-result { color: #fbbf24; font-weight: 700; }
+  .cmp-wrong { color: #f87171; }
+  .cmp-no-actual { color: #555; font-style: italic; }
+  .predict-empty {
+    text-align: center; padding: 40px 20px; color: #555; font-size: 0.85rem;
+  }
+
   .footer {
     text-align: center; padding: 30px 20px; color: #333; font-size: 0.7rem;
     border-top: 1px solid var(--border); margin-top: 40px;
@@ -316,6 +396,17 @@
     .time-col { font-size: 0.65rem; }
     .venue-col { font-size: 0.58rem; max-width: 80px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
+    /* Prediction */
+    .predict-stats-bar { font-size: 0.7rem; padding: 8px 10px; }
+    .predict-subtab { padding: 5px 12px; font-size: 0.7rem; }
+    .pred-match-row { font-size: 0.68rem; padding: 4px 8px; gap: 4px; }
+    .pred-match-row .pred-score { font-size: 0.7rem; min-width: 32px; padding: 2px 6px; }
+    .pred-match-row .pred-time { font-size: 0.62rem; min-width: 42px; }
+    .pred-match-row .pred-venue { display: none; }
+    .pred-section-title, .compare-group-title { font-size: 0.72rem; }
+    .compare-table { font-size: 0.64rem; }
+    .compare-table th, .compare-table td { padding: 4px 6px; }
+
     /* Footer */
     .footer { padding: 16px 10px; font-size: 0.62rem; margin-top: 24px; }
 
@@ -333,6 +424,9 @@
     .mini-match { font-size: 0.62rem; }
     .br-match { width: 100% !important; min-width: auto !important; }
     .schedule-table { font-size: 0.62rem; }
+    .pred-match-row { font-size: 0.6rem; }
+    .pred-match-row .pred-score { font-size: 0.62rem; min-width: 28px; }
+    .compare-table { font-size: 0.56rem; }
   }
 </style>
 </head>
@@ -358,9 +452,10 @@
 
 <!-- ======== TABS ======== -->
 <div class="tabs">
-  <button class="tab-btn active" onclick="switchTab('groups', this)">📋 小组赛</button>
-  <button class="tab-btn" onclick="switchTab('bracket', this)">🏟️ 淘汰赛对阵</button>
-  <button class="tab-btn" onclick="switchTab('schedule', this)">📅 完整赛程</button>
+  <button class="tab-btn active" data-tab="groups" onclick="switchTab('groups', this)">📋 小组赛</button>
+  <button class="tab-btn" data-tab="bracket" onclick="switchTab('bracket', this)">🏟️ 淘汰赛对阵</button>
+  <button class="tab-btn" data-tab="schedule" onclick="switchTab('schedule', this)">📅 完整赛程</button>
+  <button class="tab-btn" data-tab="predictions" onclick="switchTab('predictions', this)">🔮 预测</button>
   <button class="tab-btn" onclick="loadDemoData()" style="border-color:rgba(240,192,64,0.3);background:rgba(240,192,64,0.06);">✨ 载入演示比分</button>
   <button class="tab-btn" onclick="clearAllScores()" style="border-color:rgba(220,38,38,0.3);background:rgba(220,38,38,0.06);">🗑️ 清空所有比分</button>
 </div>
@@ -397,6 +492,20 @@
     <tbody id="schedule-body"></tbody>
   </table>
 </div>
+</div>
+
+<!-- ======== 预测 ======== -->
+<div class="tab-content" id="tab-predictions">
+
+  <div class="predict-stats-bar" id="predict-stats-bar"></div>
+
+  <div class="predict-subtabs">
+    <button class="predict-subtab active" onclick="switchPredictionSubTab('predict', this)">📝 预测模式</button>
+    <button class="predict-subtab" onclick="switchPredictionSubTab('compare', this)">🔍 比较模式</button>
+  </div>
+
+  <div class="predict-content" id="predict-content"></div>
+
 </div>
 
 </div>
@@ -829,15 +938,15 @@ function renderBracket() {
   ];
 
   // 渲染单个比赛卡片
-  function matchCard(m, cls) {
+  function matchCard(m, cls, roundKey, matchIdx) {
     const s = m.score;
     const s1 = s ? s.split('-')[0] : '?';
     const s2 = s ? s.split('-')[1] : '?';
     const c1 = s ? (parseInt(s1) >= parseInt(s2) ? 'w' : 'l') : 't';
     const c2 = s ? (parseInt(s2) >= parseInt(s1) ? 'w' : 'l') : 't';
-    return `<div class="br-match ${cls||''}">
-      <div class="m-team"><span>${m.team1}</span><span class="sc ${c1}">${s1}</span></div>
-      <div class="m-team"><span>${m.team2}</span><span class="sc ${c2}">${s2}</span></div>
+    return `<div class="br-match ${cls||''}" data-round-key="${roundKey||''}" data-match-idx="${matchIdx!=null?matchIdx:''}">
+      <div class="m-team"><span>${m.team1}</span><span class="sc score ${c1}">${s1}</span></div>
+      <div class="m-team"><span>${m.team2}</span><span class="sc score ${c2}">${s2}</span></div>
       <div class="m-info">${m.bjDate} ${m.bjTime} · ${m.venue}</div>
     </div>`;
   }
@@ -869,7 +978,7 @@ function renderBracket() {
       if (r.key === 'sf' && mi === 1) {
         // SF下半区后面接季军赛
       }
-      html += matchCard(m, cardCls);
+      html += matchCard(m, cardCls, r.key, mi);
     });
 
     html += `</div></div>`;
@@ -889,7 +998,7 @@ function renderBracket() {
   html += `<div class="bracket-col fnl" style="margin-left:8px;">
     <h3>🥉 季军赛<br><small>7/19</small></h3>
     <div class="br-inner" style="display:flex;flex-direction:column;flex:1;justify-content:center;">
-      ${matchCard(tp, 'third-card')}
+      ${matchCard(tp, 'third-card', 'third', 0)}
     </div>
   </div>`;
 
@@ -1020,53 +1129,270 @@ function filterSchedule(filter, btn) {
   renderSchedule(filter);
 }
 
+// ===== 预测渲染 =====
+
+function updatePredictionStatsBar() {
+  const activeSub = document.querySelector('.predict-subtab.active');
+  if (!activeSub) return;
+  const bar = document.getElementById('predict-stats-bar');
+  if (!bar) return;
+  const stats = calcPredictionStats();
+  if (activeSub.textContent.includes('预测')) {
+    bar.innerHTML = `📊 已预测 <strong>${stats.predicted}/${stats.total}</strong> 场 · 可评分 <strong>${stats.scorable}</strong> 场 · 总分 <strong>${stats.points}</strong> 分`;
+  } else {
+    const scorable = stats.exact + stats.result + stats.wrong;
+    const accuracy = scorable > 0 ? Math.round((stats.exact + stats.result) / scorable * 100) : 0;
+    bar.innerHTML = `📊 总分 <strong>${stats.points}</strong> · 完全命中 <strong style="color:#4ade80;">${stats.exact}</strong> 场 · 结果正确 <strong style="color:#fbbf24;">${stats.result}</strong> 场 · 错误 <strong style="color:#f87171;">${stats.wrong}</strong> 场 · 准确率 <strong>${accuracy}%</strong>`;
+  }
+}
+
+function switchPredictionSubTab(subView, btn) {
+  document.querySelectorAll('.predict-subtab').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  renderPredictTab(subView);
+}
+
+function renderPredictTab(subView) {
+  // 统计条
+  const stats = calcPredictionStats();
+  const bar = document.getElementById('predict-stats-bar');
+  if (subView === 'predict') {
+    const accuracy = stats.predicted > 0 ? Math.round(stats.scorable / Math.max(stats.predicted, 1) * 100) : 0;
+    bar.innerHTML = `📊 已预测 <strong>${stats.predicted}/${stats.total}</strong> 场 · 可评分 <strong>${stats.scorable}</strong> 场 · 总分 <strong>${stats.points}</strong> 分`;
+  } else {
+    const scorable = stats.exact + stats.result + stats.wrong;
+    const accuracy = scorable > 0 ? Math.round((stats.exact + stats.result) / scorable * 100) : 0;
+    bar.innerHTML = `📊 总分 <strong>${stats.points}</strong> · 完全命中 <strong style="color:#4ade80;">${stats.exact}</strong> 场 · 结果正确 <strong style="color:#fbbf24;">${stats.result}</strong> 场 · 错误 <strong style="color:#f87171;">${stats.wrong}</strong> 场 · 准确率 <strong>${accuracy}%</strong>`;
+  }
+
+  const content = document.getElementById('predict-content');
+  if (subView === 'predict') {
+    content.innerHTML = renderPredictView();
+  } else {
+    content.innerHTML = renderCompareView();
+  }
+}
+
+function renderPredictView() {
+  if (!predictions) initPredictions();
+  let html = '';
+  let matchNum = 0;
+
+  // 小组赛
+  html += `<div class="pred-section-title">📋 小组赛</div>`;
+  'ABCDEFGHIJKL'.split('').forEach(g => {
+    const ts = groups[g].teams;
+    html += `<div class="pred-round-group">
+      <div class="pred-round-header">${g}组</div>`;
+    groupMatches[g].forEach((m, i) => {
+      matchNum++;
+      const pred = predictions.groups[g] ? predictions.groups[g][i] : null;
+      const pending = !pred;
+      const scoreCls = pending ? 'pred-score pending' : 'pred-score';
+      html += `<div class="pred-match-row">
+        <span class="pred-num">#${matchNum}</span>
+        <span class="pred-teams">${ts[m.home].flag} ${ts[m.home].name} <span style="color:#444;">vs</span> ${ts[m.away].flag} ${ts[m.away].name}</span>
+        <span class="${scoreCls}" data-pred-group="${g}" data-pred-idx="${i}">${pending ? '?-?' : pred}</span>
+        <span class="pred-time">${m.bjDate}<br>${m.bjTime}</span>
+      </div>`;
+    });
+    html += `</div>`;
+  });
+
+  // 淘汰赛
+  html += `<div class="pred-section-title">🏟️ 淘汰赛</div>`;
+  const koLabels = { r32: '32强赛', r16: '16强赛', qf: '¼决赛', sf: '半决赛', third: '🥉 季军赛', final: '🏆 决赛' };
+  ['r32','r16','qf','sf','third','final'].forEach(r => {
+    html += `<div class="pred-round-group">
+      <div class="pred-round-header">${koLabels[r]}</div>`;
+    koRounds[r].matches.forEach((m, i) => {
+      matchNum++;
+      const pred = predictions.knockout[r] ? predictions.knockout[r][i] : null;
+      const pending = !pred;
+      const scoreCls = pending ? 'pred-score pending' : 'pred-score';
+      html += `<div class="pred-match-row">
+        <span class="pred-num">#${matchNum}</span>
+        <span class="pred-teams">${m.team1} <span style="color:#444;">vs</span> ${m.team2}</span>
+        <span class="${scoreCls}" data-pred-round="${r}" data-pred-idx="${i}">${pending ? '?-?' : pred}</span>
+        <span class="pred-time">${m.bjDate}<br>${m.bjTime}</span>
+      </div>`;
+    });
+    html += `</div>`;
+  });
+
+  return html || '<div class="predict-empty">加载中...</div>';
+}
+
+function renderCompareView() {
+  if (!predictions) initPredictions();
+  const stats = calcPredictionStats();
+  if (stats.scorable === 0) {
+    return `<div class="predict-empty">暂无可以比较的数据。<br><br>💡 先在「📝 预测模式」中预测比分，再在「小组赛」或「淘汰赛对阵」中输入真实比分，<br>然后回到这里查看预测准确率。</div>`;
+  }
+
+  let html = '';
+
+  // 小组赛比较
+  const groupRows = [];
+  'ABCDEFGHIJKL'.split('').forEach(g => {
+    const ts = groups[g].teams;
+    groupMatches[g].forEach((m, i) => {
+      const pred = predictions.groups[g] ? predictions.groups[g][i] : null;
+      const actual = m.score;
+      if (!pred || !actual) return;
+      const pts = scorePrediction(pred, actual);
+      const badge = pts === 3 ? '<span class="cmp-exact">✅ 3分 完全命中</span>'
+        : pts === 1 ? '<span class="cmp-result">🟡 1分 结果正确</span>'
+        : '<span class="cmp-wrong">❌ 0分</span>';
+      groupRows.push({ teams: `${ts[m.home].flag} ${ts[m.home].name} vs ${ts[m.away].flag} ${ts[m.away].name}`, pred, actual, pts, badge });
+    });
+  });
+
+  if (groupRows.length > 0) {
+    html += `<div class="compare-group-title">📋 小组赛</div>
+    <table class="compare-table"><thead><tr><th>对阵</th><th>预测</th><th>实际</th><th>得分</th></tr></thead><tbody>`;
+    groupRows.forEach(r => {
+      html += `<tr><td>${r.teams}</td><td style="text-align:center;">${r.pred}</td><td style="text-align:center;font-weight:700;color:var(--gold);">${r.actual}</td><td>${r.badge}</td></tr>`;
+    });
+    html += `</tbody></table>`;
+  }
+
+  // 淘汰赛比较
+  const koRows = [];
+  const koLabels = { r32: '32强赛', r16: '16强赛', qf: '¼决赛', sf: '半决赛', third: '季军赛', final: '决赛' };
+  ['r32','r16','qf','sf','third','final'].forEach(r => {
+    koRounds[r].matches.forEach((m, i) => {
+      const pred = predictions.knockout[r] ? predictions.knockout[r][i] : null;
+      const actual = m.score;
+      if (!pred || !actual) return;
+      const pts = scorePrediction(pred, actual);
+      const badge = pts === 3 ? '<span class="cmp-exact">✅ 3分 完全命中</span>'
+        : pts === 1 ? '<span class="cmp-result">🟡 1分 结果正确</span>'
+        : '<span class="cmp-wrong">❌ 0分</span>';
+      koRows.push({ teams: `${m.team1} vs ${m.team2}`, pred, actual, pts, badge });
+    });
+  });
+
+  if (koRows.length > 0) {
+    html += `<div class="compare-group-title">🏟️ 淘汰赛</div>
+    <table class="compare-table"><thead><tr><th>对阵</th><th>预测</th><th>实际</th><th>得分</th></tr></thead><tbody>`;
+    koRows.forEach(r => {
+      html += `<tr><td>${r.teams}</td><td style="text-align:center;">${r.pred}</td><td style="text-align:center;font-weight:700;color:var(--gold);">${r.actual}</td><td>${r.badge}</td></tr>`;
+    });
+    html += `</tbody></table>`;
+  }
+
+  return html || '<div class="predict-empty">暂无可以比较的数据。</div>';
+}
+
 // Tab切换
 function switchTab(tab, btn) {
-  // 只去除前3个tab按钮的active状态（排除演示按钮）
-  const tabBtns = document.querySelectorAll('.tab-btn');
-  tabBtns.forEach((b, i) => {
-    if (i < 3) b.classList.remove('active');
-  });
+  // 去除所有 real tab 的 active 状态（data-tab 标记的按钮）
+  document.querySelectorAll('.tab-btn[data-tab]').forEach(b => b.classList.remove('active'));
   document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
   document.getElementById('tab-' + tab).classList.add('active');
   if (btn) {
     btn.classList.add('active');
-    // 移动端自动滚动标签到可视区
     if (window.innerWidth <= 768) {
       btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
     }
   }
   // 切换到淘汰赛tab时重绘连接线(桌面端)
   if (tab === 'bracket') setTimeout(() => drawConnectors(), 150);
+  // 切换到预测tab时渲染预测视图
+  if (tab === 'predictions') renderPredictTab('predict');
 }
 
 // 点击编辑比分
 document.addEventListener('click', function(e) {
   const scoreEl = e.target.closest('.score');
   if (!scoreEl) return;
+
+  // ---- 编辑小组赛比分 ----
   const groupCard = scoreEl.closest('.group-card');
   const miniMatch = scoreEl.closest('.mini-match');
-  if (!groupCard || !miniMatch) return;
+  if (groupCard && miniMatch) {
+    const groupName = groupCard.querySelector('.badge').textContent.trim();
+    const allMatches = Array.from(groupCard.querySelectorAll('.mini-match'));
+    const idx = allMatches.indexOf(miniMatch);
+    if (idx < 0 || !groupMatches[groupName] || idx >= groupMatches[groupName].length) return;
 
-  const groupName = groupCard.querySelector('.badge').textContent.trim();
-  const allMatches = Array.from(groupCard.querySelectorAll('.mini-match'));
-  const idx = allMatches.indexOf(miniMatch);
-  if (idx < 0 || !groupMatches[groupName] || idx >= groupMatches[groupName].length) return;
+    const current = scoreEl.textContent.replace('?','').trim();
+    const parts = current ? current.split('-') : ['?','?'];
+    const h = prompt('主队进球数：', parts[0]==='?'?'':parts[0]);
+    if (h === null) return;
+    const a = prompt('客队进球数：', parts[1]==='?'?'':parts[1]);
+    if (a === null) return;
+    if (h !== '' && a !== '') {
+      groupMatches[groupName][idx].score = h + '-' + a;
+      recalcGroup(groupName);
+      renderGroups();
+      renderBracket();
+      renderSchedule();
+      updateScheduleData();
+      saveScores();
+    }
+    return;
+  }
 
-  const current = scoreEl.textContent.replace('?','').trim();
-  const parts = current ? current.split('-') : ['?','?'];
-  const h = prompt('主队进球数：', parts[0]==='?'?'':parts[0]);
-  if (h === null) return;
-  const a = prompt('客队进球数：', parts[1]==='?'?'':parts[1]);
-  if (a === null) return;
-  if (h !== '' && a !== '') {
-    groupMatches[groupName][idx].score = h + '-' + a;
-    recalcGroup(groupName);
-    renderGroups();
-    renderBracket();
-    renderSchedule();
-    updateScheduleData();
-    saveScores(); // 持久化到 localStorage
+  // ---- 编辑淘汰赛比分 ----
+  const brMatch = scoreEl.closest('.br-match');
+  if (brMatch) {
+    const roundKey = brMatch.dataset.roundKey;
+    const matchIdx = parseInt(brMatch.dataset.matchIdx);
+    if (!roundKey || isNaN(matchIdx)) return;
+    if (!koRounds[roundKey] || !koRounds[roundKey].matches[matchIdx]) return;
+
+    const m = koRounds[roundKey].matches[matchIdx];
+    const current = m.score;
+    const parts = current ? current.split('-') : ['?','?'];
+    const h = prompt('主队进球数（' + m.team1 + '）：', parts[0]==='?'||!current?'':parts[0]);
+    if (h === null) return;
+    const a = prompt('客队进球数（' + m.team2 + '）：', parts[1]==='?'||!current?'':parts[1]);
+    if (a === null) return;
+    if (h !== '' && a !== '') {
+      m.score = h + '-' + a;
+      // 同步到 fullSchedule
+      const sm = fullSchedule.find(s => s.phase === koRounds[roundKey].name && s.home === m.team1 && s.away === m.team2);
+      if (sm) sm.score = m.score;
+      renderBracket();
+      renderSchedule();
+      saveScores();
+      setTimeout(() => drawConnectors(), 150);
+    }
+    return;
+  }
+
+  // ---- 编辑预测比分 ----
+  const predScore = scoreEl.closest('.pred-score');
+  if (predScore) {
+    const group = predScore.dataset.predGroup;
+    const round = predScore.dataset.predRound;
+    const idx = parseInt(predScore.dataset.predIdx);
+    if (isNaN(idx)) return;
+
+    let current = predScore.textContent.replace('?','').trim();
+    if (current === '?-?' || !current) current = '';
+    const parts = current ? current.split('-') : ['',''];
+    const h = prompt('预测主队进球：', parts[0]||'');
+    if (h === null) return;
+    const a = prompt('预测客队进球：', parts[1]||'');
+    if (a === null) return;
+    if (h !== '' && a !== '') {
+      if (!predictions) initPredictions();
+      if (group) {
+        if (!predictions.groups[group]) predictions.groups[group] = groupMatches[group].map(() => null);
+        predictions.groups[group][idx] = h + '-' + a;
+      } else if (round) {
+        if (!predictions.knockout[round]) predictions.knockout[round] = koRounds[round].matches.map(() => null);
+        predictions.knockout[round][idx] = h + '-' + a;
+      }
+      savePredictions();
+      renderPredictTab(document.querySelector('.predict-subtab.active')?.textContent.includes('预测') ? 'predict' : 'compare');
+      // 同时更新统计条
+      updatePredictionStatsBar();
+    }
+    return;
   }
 });
 
@@ -1135,6 +1461,117 @@ function loadScores() {
     }
     return restored;
   } catch(e) { return false; }
+}
+
+// ===== 预测数据层 =====
+const PREDICTIONS_KEY = 'wc2026_predictions';
+let predictions = null;
+
+function initPredictions() {
+  predictions = { groups: {}, knockout: {} };
+  Object.keys(groupMatches).forEach(g => {
+    predictions.groups[g] = groupMatches[g].map(() => null);
+  });
+  ['r32','r16','qf','sf','third','final'].forEach(r => {
+    predictions.knockout[r] = koRounds[r].matches.map(() => null);
+  });
+}
+
+function savePredictions() {
+  if (!predictions) return;
+  const data = { groups: {}, knockout: {} };
+  Object.keys(predictions.groups).forEach(g => {
+    data.groups[g] = predictions.groups[g].slice();
+  });
+  Object.keys(predictions.knockout).forEach(r => {
+    data.knockout[r] = predictions.knockout[r].slice();
+  });
+  localStorage.setItem(PREDICTIONS_KEY, JSON.stringify(data));
+}
+
+function loadPredictions() {
+  try {
+    const raw = localStorage.getItem(PREDICTIONS_KEY);
+    if (!raw) return false;
+    const data = JSON.parse(raw);
+    initPredictions();
+    let restored = false;
+    if (data.groups) {
+      Object.keys(data.groups).forEach(g => {
+        if (predictions.groups[g] && Array.isArray(data.groups[g])) {
+          data.groups[g].forEach((score, i) => {
+            if (score !== null && score !== undefined && predictions.groups[g][i] !== undefined) {
+              predictions.groups[g][i] = score;
+              restored = true;
+            }
+          });
+        }
+      });
+    }
+    if (data.knockout) {
+      Object.keys(data.knockout).forEach(r => {
+        if (predictions.knockout[r] && Array.isArray(data.knockout[r])) {
+          data.knockout[r].forEach((score, i) => {
+            if (score !== null && score !== undefined && predictions.knockout[r][i] !== undefined) {
+              predictions.knockout[r][i] = score;
+              restored = true;
+            }
+          });
+        }
+      });
+    }
+    return restored;
+  } catch(e) { return false; }
+}
+
+// 计分: 完全命中3分, 结果正确1分, 错误0分
+function scorePrediction(pred, actual) {
+  if (!pred || !actual) return 0;
+  if (pred === actual) return 3;
+  const [ph, pa] = pred.split('-').map(Number);
+  const [ah, aa] = actual.split('-').map(Number);
+  if (isNaN(ph) || isNaN(pa) || isNaN(ah) || isNaN(aa)) return 0;
+  const pRes = Math.sign(ph - pa);
+  const aRes = Math.sign(ah - aa);
+  return pRes === aRes ? 1 : 0;
+}
+
+function calcPredictionStats() {
+  if (!predictions) return { total: 104, predicted: 0, scorable: 0, exact: 0, result: 0, wrong: 0, points: 0 };
+  let total = 0, predicted = 0, scorable = 0, exact = 0, result = 0, wrong = 0, points = 0;
+  // 小组赛
+  Object.keys(groupMatches).forEach(g => {
+    groupMatches[g].forEach((m, i) => {
+      total++;
+      const pred = predictions.groups[g] ? predictions.groups[g][i] : null;
+      if (pred) predicted++;
+      if (pred && m.score) {
+        scorable++;
+        const pts = scorePrediction(pred, m.score);
+        points += pts;
+        if (pts === 3) exact++;
+        else if (pts === 1) result++;
+        else wrong++;
+      }
+    });
+  });
+  // 淘汰赛
+  ['r32','r16','qf','sf','third','final'].forEach(r => {
+    koRounds[r].matches.forEach((m, i) => {
+      total++;
+      const pred = predictions.knockout[r] ? predictions.knockout[r][i] : null;
+      if (pred) predicted++;
+      if (pred && m.score) {
+        scorable++;
+        const pts = scorePrediction(pred, m.score);
+        points += pts;
+        if (pts === 3) exact++;
+        else if (pts === 1) result++;
+        else wrong++;
+      }
+    });
+  });
+  return { total, predicted, scorable, exact, result, wrong, points };
 }
 
 // 演示数据
@@ -1261,6 +1698,10 @@ if (hasSaved) {
       if (sm) sm.score = m.score;
     });
   });
+}
+// 加载预测数据
+if (!loadPredictions()) {
+  initPredictions();
 }
 renderGroups();
 renderBracket();
